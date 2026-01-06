@@ -75,91 +75,66 @@ h2, h4 { padding: 20px 5%; }
 .btn-prev-vitrine { left: 5px; }
 .btn-next-vitrine { right: 5px; }
 
-
-/*------------------------------  main  ---------------------------------------------------*/
-
-
-
-/*------------------------------------------------section Elenco----------------------------*/
-
-#elenco img{
-    margin: auto;
-  width: 100%;
-
-}
-
 /*------------------------------------------------Section Histórico ----------------------------*/
 
 section#historico {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-wrap: wrap; /* Essencial para o flyer descer no celular */
+    flex-wrap: wrap; 
     width: 100%;
     height: auto;
     gap: 15px;
-    padding: 20px 0;
+    padding: 20px 5%;
 }
 
-/* Mantém os dois rankings lado a lado sempre */
 #rank-container {
     display: flex;
     flex-direction: row; 
     gap: 10px;
     justify-content: center;
+    max-width: 100%;
 }
 
 .ranking-box {
     position: relative;
     display: flex;
-    width: 300px; /* Ajustado para caberem dois + flyer no desktop */
+    width: 300px; 
     height: 400px;
     background-color: black;
 }
 
 .rank {
     width: 100%;
-    padding: 1px;
+    height: 100%;
+    object-fit: contain;
 }
 
 #flyer {
     display: flex;
     justify-content: center;
     position: relative;
-    width: 380px;
-    height: 400px;
-}
-
-#imgflyer {
-    width: 420px;
+    width: 100%;
+    max-width: 420px;
     height: auto;
 }
 
-#artilheiro {
-    font-size: 22px;
-    position: absolute;
-    top: 70px;
-    left: 10px;  
-    color: GOLD;
-    -webkit-text-stroke-width: 0.3px;
-    -webkit-text-stroke-color: rgb(20, 34, 231);
+#imgflyer {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-#assistencia {
-    font-size: 22px;
-    position: absolute;
-    top: 70px;
-    left: 10px;  
-    color: white; /* Cor alterada para contraste se necessário */
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: rgb(203, 224, 8);
-}
-
-.h3 {
-    margin-top: 10px;
-    margin-bottom: 20px;
+#artilheiro, #assistencia {
     font-size: 20px;
+    position: absolute;
+    top: 70px;
+    left: 10px;  
 }
+#artilheiro { color: GOLD; -webkit-text-stroke: 0.3px rgb(20, 34, 231); }
+#assistencia { color: white; -webkit-text-stroke: 0.5px rgb(203, 224, 8); }
+
+.h3 { margin-top: 10px; margin-bottom: 20px; font-size: 18px; }
 
 /*------------------------------------------------ Footer ----------------------------*/
 
@@ -170,77 +145,19 @@ footer {
     border-top: 3px solid rgb(58, 58, 225);
     margin-top: 50px;
 }
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-box {
-    flex: 1;
-    min-width: 250px;
-}
-
-.footer-box h3 {
-    color: gold;
-    margin-bottom: 20px;
-    font-size: 18px;
-    text-transform: uppercase;
-}
-
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.social-links a, .maps-link {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 15px;
-}
-
-.social-links a:hover, .maps-link:hover {
-    color: gold;
-    padding-left: 5px;
-}
-
-.maps-link {
-    display: inline-block;
-    margin-top: 10px;
-    color: rgb(58, 58, 225);
-    font-weight: bold;
-}
-
-.footer-bottom {
-    width: 100%;
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-    font-size: 13px;
-    color: #888;
-}
-
+.footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; max-width: 1200px; margin: 0 auto; }
+.footer-box { flex: 1; min-width: 250px; }
+.footer-box h3 { color: gold; margin-bottom: 20px; font-size: 18px; text-transform: uppercase; }
+.social-links { display: flex; flex-direction: column; gap: 10px; }
+.social-links a, .maps-link { color: white; text-decoration: none; transition: 0.3s; font-size: 15px; }
+.social-links a:hover, .maps-link:hover { color: gold; padding-left: 5px; }
+.maps-link { display: inline-block; margin-top: 10px; color: rgb(58, 58, 225); font-weight: bold; }
+.footer-bottom { width: 100%; text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; font-size: 13px; color: #888; }
 
 /* Responsividade */
 @media (max-width: 1024px) {
-    /* No tablet/celular, o container de rankings ganha 100% de largura */
-    /* Isso força o Flyer (que vem depois no HTML) a pular para baixo */
-    #rank-container {
-        width: 100%;
-    }
-    
-    #flyer {
-        width: 100%;
-        height: auto;
-        margin-top: 20px;
-    }
+    #rank-container { width: 100%; }
+    #flyer { width: 100%; margin-top: 20px; }
 }
 @media (max-width: 1000px) {
     .card-vitrine { flex: 0 0 calc((100% / 4) - 8px); width: calc((100% / 4) - 8px); }
@@ -248,28 +165,8 @@ footer {
 @media (max-width: 600px) {
     .vitrine-wrapper { padding: 0 35px; }
     .card-vitrine { flex: 0 0 calc((100% / 2) - 8px); width: calc((100% / 2) - 8px); }
-/* Ajuste fino para telas muito pequenas não cortarem os rankings lado a lado */
-    .ranking-box {
-        width: 170px; /* Reduz um pouco o tamanho para caberem os dois na mesma linha */
-    }
-    .h3 {
-        font-size: 14px;
-    }
+    .ranking-box { width: calc(50% - 5px); height: auto; aspect-ratio: 3 / 4; }
+    .h3 { font-size: 12px; margin-bottom: 10px; }
+    #artilheiro, #assistencia { font-size: 14px; top: 50px; }
+    .footer-container { flex-direction: column; text-align: center; }
 }
-
-/* Responsivo para o Footer */
-@media (max-width: 600px) {
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .social-links a:hover {
-        padding-left: 0;
-    }
-}
-
-
-
-
-
-
