@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Real Madrid - Premium</title>
+    <style>
+        /* CSS GERAL E RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #121212; font-family: 'Segoe UI', sans-serif; color: white; overflow-x: hidden; }
+        
+        header { 
+            background: #3a3ae1; padding: 15px 5%; display: flex; 
+            justify-content: space-between; align-items: center; 
+        }
+        nav a { color: white; text-decoration: none; font-weight: bold; margin-left: 20px; }
+        h2 { text-align: center; color: gold; padding: 40px 0 20px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- SEÇÃO 1: TROFÉUS --- */
+        .trofeis-container {
+            max-width: 1200px; margin: 0 auto; position: relative;
+            overflow: hidden; padding: 20px 0;
+        }
+        .trofeis-track {
+            display: flex; transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+        .trofeis-item {
+            min-width: calc(33.333% - 14px); /* 3 por vez no Desktop */
+            height: 350px; border-radius: 10px; overflow: hidden;
+            transition: transform 0.3s; filter: grayscale(100%);
+        }
+        .trofeis-item.active { transform: scale(1.05); filter: grayscale(0%); border: 2px solid gold; }
+        .trofeis-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+
+        /* --- SEÇÃO 2: HISTÓRICO --- */
+        .historico-wrapper {
+            display: flex; max-width: 1200px; margin: 0 auto; gap: 15px;
+            height: 500px;
+        }
+        .historico-carrossel {
+            flex: 2; position: relative; overflow: hidden; border-radius: 10px; background: #000;
+        }
+        .historico-slider { display: flex; height: 100%; transition: 0.5s; }
+        .hist-slide { min-width: 100%; height: 100%; }
+        .hist-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        .historico-grid {
+            width: 310px; 
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(5, 1fr); gap: 10px;
+        }
+        .historico-grid img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            border-radius: 5px; cursor: pointer; transition: 0.3s;
+        }
+
+        /* --- SEÇÃO 3: GALERIA --- */
+        .galeria-uniforme {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 15px; max-width: 1300px; margin: 0 auto 50px;
+        }
+        .galeria-uniforme img {
+            width: 250px; height: 250px; object-fit: cover;
+            border-radius: 8px; cursor: pointer; transition: 0.3s;
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none; position: fixed; z-index: 9999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); justify-content: center; align-items: center;
+        }
+        .modal-content { width: 70%; max-height: 85vh; object-fit: contain; border: 2px solid gold; }
+        .modal-content.full { width: 100%; border: none; }
+        .close { position: absolute; top: 20px; right: 40px; font-size: 50px; color: white; cursor: pointer; }
+
+        /* BOTÕES NAVEGAÇÃO */
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,217,0,0.8); border: none; padding: 15px;
+            cursor: pointer; font-weight: bold; border-radius: 50%; z-index: 10;
+        }
+        .btn-l { left: 10px; } .btn-r { right: 10px; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 900px) {
+            .trofeis-track { gap: 0; }
+            .trofeis-item { min-width: 100%; height: 300px; border-radius: 0; }
+            .historico-wrapper { flex-direction: column; height: auto; }
+            .historico-carrossel { height: 300px; }
+            .historico-grid { 
+                width: 100%; 
+                grid-template-columns: repeat(5, 1fr); 
+                grid-template-rows: repeat(2, 80px); 
+            }
+            .galeria-uniforme img { width: 45%; height: 160px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>REAL MADRID</h1>
+    <nav><a href="../INDEX.html">INÍCIO</a><a href="../LOJA/index.html">LOJA</a>
+</header>
+
+<main>
+    <h2 id="trofeus">GALERIA</h2>
+    <div class="trofeis-container">
+        <button class="nav-btn btn-l" onclick="moveTrofeu(-1)">&#10094;</button>
+        <div class="trofeis-track" id="trofeuTrack">
+            <div class="trofeis-item active"><img src="./IMAGENS/T1.webp" onclick="openModal(this, '70')"></div>
+            <div class="trofeis-item"><img src="./IMAGENS/T2.webp" onclick="openModal(this, '70')"></div>
+            <div class="trofeis-item"><img src="./IMAGENS/T3.jpg" onclick="openModal(this, '70')"></div>
+            <div class="trofeis-item"><img src="./IMAGENS/T4.webp" onclick="openModal(this, '70')"></div>
+            <div class="trofeis-item"><img src="./IMAGENS/T5.webp" onclick="openModal(this, '70')"></div>
+            <div class="trofeis-item"><img src="./IMAGENS/I1.jpg" onclick="openModal(this, '70')"></div>
+            <div class="trofeis-item"><img src="./IMAGENS/I2.jpg" onclick="openModal(this, '70')"></div>
+        </div>
+        <button class="nav-btn btn-r" onclick="moveTrofeu(1)">&#10095;</button>
+    </div>
+
+    <h2 id="historico">Histórico Lendário</h2>
+    <div class="historico-wrapper">
+        <div class="historico-carrossel">
+            <div class="historico-slider" id="histSlider">
+                <div class="hist-slide"><img src="./IMAGENS/I1.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I2.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I3.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I4.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I5.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I1.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I2.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I3.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I4.jpg"></div>
+                <div class="hist-slide"><img src="./IMAGENS/I5.jpg"></div>
+            </div>
+            <button class="nav-btn btn-l" onclick="moveHist(-1)">&#10094;</button>
+            <button class="nav-btn btn-r" onclick="moveHist(1)">&#10095;</button>
+        </div>
+        
+        <div class="historico-grid">
+            <img src="./IMAGENS/I1.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I2.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I3.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I4.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I5.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I1.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I2.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I3.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I4.jpg" onclick="openModal(this, '100')">
+            <img src="./IMAGENS/I5.jpg" onclick="openModal(this, '100')">
+        </div>
+    </div>
+
+    <h2>Galeria Geral</h2>
+    <div class="galeria-uniforme">
+        <img src="./IMAGENS/I1.jpg" onclick="openModal(this, '70')">
+        <img src="./IMAGENS/I2.jpg" onclick="openModal(this, '70')">
+        <img src="./IMAGENS/I3.jpg" onclick="openModal(this, '70')">
+        <img src="./IMAGENS/I4.jpg" onclick="openModal(this, '70')">
+        <img src="./IMAGENS/I5.jpg" onclick="openModal(this, '70')">
+    </div>
+</main>
+
+<div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg" class="modal-content">
+</div>
+
+<script>
+    // LÓGICA CARROSSEL TROFÉUS
+    let trofeuIdx = 0;
+    function moveTrofeu(dir) {
+        const track = document.getElementById('trofeuTrack');
+        const items = document.querySelectorAll('.trofeis-item');
+        const isMobile = window.innerWidth <= 900;
+        const visibleItems = isMobile ? 1 : 3;
+        const totalItems = items.length;
+
+        trofeuIdx += dir;
+
+        // Loop Infinito
+        if (trofeuIdx > totalItems - visibleItems) trofeuIdx = 0;
+        if (trofeuIdx < 0) trofeuIdx = totalItems - visibleItems;
+
+        const moveAmount = isMobile ? 100 : (100 / 3); 
+        track.style.transform = `translateX(-${trofeuIdx * (isMobile ? 100 : 33.8)}%)`;
+        
+        // Efeito de destaque
+        items.forEach(i => i.classList.remove('active'));
+        let highlight = isMobile ? trofeuIdx : trofeuIdx + 1;
+        if(items[highlight]) items[highlight].classList.add('active');
+    }
+
+    // LÓGICA CARROSSEL HISTÓRICO
+    let histIdx = 0;
+    function moveHist(dir) {
+        const slider = document.getElementById('histSlider');
+        const totalSlides = document.querySelectorAll('.hist-slide').length;
+
+        histIdx += dir;
+
+        // Loop Infinito
+        if (histIdx >= totalSlides) histIdx = 0;
+        if (histIdx < 0) histIdx = totalSlides - 1;
+
+        slider.style.transform = `translateX(-${histIdx * 100}%)`;
+    }
+
+    // MODAL
+    function openModal(img, size) {
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modalImg');
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+        if(size === '100') modalImg.classList.add('full');
+        else modalImg.classList.remove('full');
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    window.onclick = (e) => { 
+        if (e.target.id === 'modal') closeModal(); 
+    }
+</script>
+
+</body>
+</html>

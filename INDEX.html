@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube FC - Oficial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div id="logo"><img id="logo-img" src="./INICIO/LOGO.png" alt="Logo"></div>
+        <h1>REAL MADRID</h1>
+        <nav>
+            
+            <a href="./LOJA/index.html">LOJA</a>
+            <a href="./GALERIA/index.html">GALERIA</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="carrossel-container-full">
+            <button class="btn-prev" onclick="prevFull()">&#10094;</button>
+            <div class="slider-full" id="sliderFull">
+                <img src="./INICIO/ELENCO1.jpg" class="slide-item-full">
+                <img src="./INICIO/ELENCO2.jpg" class="slide-item-full">
+                <img src="./INICIO/ELENCO3.jpg" class="slide-item-full">
+            </div>
+            <button class="btn-next" onclick="nextFull()">&#10095;</button>
+        </section>
+
+        <h2>ELENCO</h2>
+
+        <h4>EQUIPE TÉCNICA</h4>
+        <section class="carrossel-vitrine-container">
+            <div class="vitrine-wrapper">
+                <button class="btn-prev-vitrine" onclick="moverVitrine(this, -1)">&#10094;</button>
+                <div class="slider-vitrine">
+                    <img src="./INICIO/FLYER.png" class="card-vitrine">
+                    <img src="./ELENCO/tec.webp" class="card-vitrine">
+                    <img src="./INICIO/FLYER.png" class="card-vitrine">
+                    <img src="./ELENCO/tec.webp" class="card-vitrine">
+                    <img src="./INICIO/FLYER.png" class="card-vitrine">
+                    <img src="./ELENCO/tec.webp" class="card-vitrine">
+                    
+                </div>
+                <button class="btn-next-vitrine" onclick="moverVitrine(this, 1)">&#10095;</button>
+            </div>
+        </section>
+       
+        <h4>DEFENSORES</h4>
+        <section class="carrossel-vitrine-container">
+            <div class="vitrine-wrapper">
+                <button class="btn-prev-vitrine" onclick="moverVitrine(this, -1)">&#10094;</button>
+                <div class="slider-vitrine">
+                    <img src="./ELENCO/z1.webp" class="card-vitrine">
+                    <img src="./ELENCO/z2.webp" class="card-vitrine">
+                    <img src="./ELENCO/z3.webp" class="card-vitrine">
+                    <img src="./ELENCO/z4.webp" class="card-vitrine">
+                    <img src="./ELENCO/z5.webp" class="card-vitrine">
+                    <img src="./ELENCO/z6.webp" class="card-vitrine">
+                </div>
+                <button class="btn-next-vitrine" onclick="moverVitrine(this, 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <h4>MEIAS</h4>
+        <section class="carrossel-vitrine-container">
+            <div class="vitrine-wrapper">
+                <button class="btn-prev-vitrine" onclick="moverVitrine(this, -1)">&#10094;</button>
+                <div class="slider-vitrine">
+                    <img src="./ELENCO/v1.webp" class="card-vitrine">
+                    <img src="./ELENCO/v2.webp" class="card-vitrine">
+                    <img src="./ELENCO/v3.webp" class="card-vitrine">
+                    <img src="./ELENCO/v4.webp" class="card-vitrine">
+                    <img src="./ELENCO/v5.webp" class="card-vitrine">
+                    <img src="./ELENCO/v6.webp" class="card-vitrine">
+                </div>
+                <button class="btn-next-vitrine" onclick="moverVitrine(this, 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <h4>ATACANTES</h4>
+        <section class="carrossel-vitrine-container">
+            <div class="vitrine-wrapper">
+                <button class="btn-prev-vitrine" onclick="moverVitrine(this, -1)">&#10094;</button>
+                <div class="slider-vitrine">
+                    <img src="./ELENCO/a1.webp" class="card-vitrine">
+                    <img src="./ELENCO/a2.webp" class="card-vitrine">
+                    <img src="./ELENCO/a3.webp" class="card-vitrine">
+                    <img src="./ELENCO/a4.webp" class="card-vitrine">
+                    <img src="./ELENCO/a1.webp" class="card-vitrine">
+                    <img src="./ELENCO/a2.webp" class="card-vitrine">
+                    <img src="./ELENCO/a3.webp" class="card-vitrine">
+                </div>
+                <button class="btn-next-vitrine" onclick="moverVitrine(this, 1)">&#10095;</button>
+            </div>
+        </section>
+       
+       
+    <section id="historico">
+    <div id="rank-container"> 
+        <div id="rank-artilharia" class="ranking-box">
+            <img class="rank" src="./inicio/ARTILHEIRO.png" alt="Artilharia">
+            <div id="artilheiro">
+                <H3 class="h3" >JOGADOR&nbsp;7&nbsp;GOL</H3>
+                <H3 class="h3" >JOGADOR&nbsp;6&nbsp;GOL</H3>
+                <H3 class="h3" >JOGADOR&nbsp;5&nbsp;GOL</H3>
+                <H3 class="h3" >JOGADOR&nbsp;4&nbsp;GOL</H3>
+                <H3 class="h3" >JOGADOR&nbsp;3&nbsp;GOL</H3>
+                <H3 class="h3" >JOGADOR&nbsp;2&nbsp;GOL</H3>
+                <H3 class="h3" >JOGADOR&nbsp;1&nbsp;GOL</H3>
+             
+              
+            </div> 
+        </div>
+
+        <div id="rank-assistencias" class="ranking-box">
+            <img class="rank" src="./INICIO/ASSISTENCIA.png" alt="Assistências">
+            <div id="assistencia">
+                <H3 class="h3" >JOGADOR&nbsp;7&nbsp;ASS</H3>
+                <H3 class="h3" >JOGADOR&nbsp;6&nbsp;ASS</H3>
+                <H3 class="h3" >JOGADOR&nbsp;5&nbsp;ASS</H3>
+                <H3 class="h3" >JOGADOR&nbsp;4&nbsp;ASS</H3>
+                <H3 class="h3" >JOGADOR&nbsp;3&nbsp;ASS</H3>
+                <H3 class="h3" >JOGADOR&nbsp;2&nbsp;ASS</H3>
+                <H3 class="h3" >JOGADOR&nbsp;1&nbsp;ASS</H3>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="flyer">
+        <img id="imgflyer" src="./INICIO/FLYER.png" alt="Flyer">
+    </div>
+</section>
+<footer>
+    <div class="footer-container">
+        <div class="footer-box">
+            <h3>REDES SOCIAIS</h3>
+            <h5 style="margin-bottom: 20PX;">CLICK EM NOSSAS REDES SOCIAIS</h5>
+            <div class="social-links">
+                <a href="https://wa.me/SEUNUMERO" target="_blank">WhatsApp</a>
+                <a href="https://instagram.com/SEUPERFIL" target="_blank">Instagram</a>
+                <a href="https://facebook.com/SUAPAGINA" target="_blank">Facebook</a>
+            </div>
+        </div>
+
+        <div class="footer-box">
+            <h3>NOSSA SEDE</h3>
+            <p>Rua Exemplo, 123 - Bairro</p>
+            <p>Cidade - Estado</p>
+            <a href="https://goo.gl/maps/LINKDOMAPAS" target="_blank" class="maps-link">Ver no Google Maps</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Real Madrid Clube FC <br> Todos os direitos jhones washington. <br>
+            ADIQUIRA UM SITE PROFISSIONAL </BR>
+        PASSE A FRENTE DO SEU RIVAL</p>
+        </div>
+    </div>
+</footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
